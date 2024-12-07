@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get the Weather</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Weather Information</h1>
+    <p>Enter a US zip code and date range to get the weather forecast:</p>
+    <form action="/weather" method="POST">
+        <label for="city">Zip Code:</label>
+        <input type="text" id="city" name="city" placeholder="Enter city" required>
+        <br>
+        <label for="date1">Start Date:</label>
+        <input type="date" id="date1" name="date1" required>
+        <br>
+        <label for="date2">End Date:</label>
+        <input type="date" id="date2" name="date2" required>
+        <br>
+        <button type="submit">Get Weather</button>
+    </form>
+</body>
+</html>

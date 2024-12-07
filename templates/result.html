@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Weather Forecast</h1>
+
+    <h2>Forecast for {{ city }}</h2> 
+    <p><strong>Date Range:</strong> {{ request.form['date1'] }} to {{ request.form['date2'] }}</p>
+
+    <main>
+        <div id="results">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Max Temperature (°C)</th>
+                        <th>Min Temperature (°C)</th>
+                        <th>Conditions</th>
+                        <th>Humidity (%)</th>
+                        <th>Wind Speed (km/h)</th>
+                        <th>Precipitation (mm)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for day in weather %}
+                    <tr>
+                        <td>{{ day.date }}</td>
+                        <td>{{ day.tempmax }}</td>
+                        <td>{{ day.tempmin }}</td>
+                        <td>{{ day.conditions }}</td>
+                        <td>{{ day.humidity }}</td>
+                        <td>{{ day.windspeed }}</td>
+                        <td>{{ day.precip }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <a href="/">Search Again</a>
+</body>
+</html>
